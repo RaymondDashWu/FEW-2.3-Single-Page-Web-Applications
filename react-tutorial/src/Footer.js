@@ -6,7 +6,7 @@ import './Footer.css';
 function Footer() {
     return (
     <div className="Footer">
-        &copy; Raymond Wu <script>document.write(new Date().getFullYear())</script>
+        &copy; Raymond Wu {new Date().getFullYear()}
     </div>
     )
 }
