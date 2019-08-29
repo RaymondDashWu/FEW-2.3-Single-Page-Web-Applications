@@ -1,0 +1,15 @@
+.Project {
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.Project:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+.ProjectDivider {
+    background-color:rgb(37, 161, 233);
+    padding-top: 1vh;
+    padding-bottom: 3vh;
+}
