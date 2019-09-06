@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Temp from './Temp';
+import Desc from './Desc';
+import Atmos from './Atmos'
 
 class Weather extends Component {
     constructor(props) {
@@ -71,12 +74,13 @@ class Weather extends Component {
         return (
           <div>
             <div>Title: {main}</div>
-            <div>Desc: {description}</div>
+            <div><Desc desc={description}/></div>
             <div>Icon: {icon}</div>
-            <div>Temp: {(temp * 9/5 - 459.67).toFixed(0)} &#176;F</div>
+            <div><Temp temp={temp}/></div>
             <div>Pressure: {pressure}</div>
             <div>Humidity: {humidity}</div>
-            <div>Temp Min: {(temp_min * 9/5 - 459.67).toFixed(0)} &#176;F Max: {(temp_max * 9/5 - 459.67).toFixed(0)} &#176;F</div>
+            <div><Temp temp={temp_min} modifier="Min"/></div>
+            <div><Temp temp={temp_max} modifier="Max"/></div>
           </div>
         )
       }
