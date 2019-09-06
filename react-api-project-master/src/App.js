@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 
 import './App.css';
+import 'milligram';
 import Weather from './Weather';
-
 /** 
  * This example illustrates a simple react project 
  * that works with an external API. 

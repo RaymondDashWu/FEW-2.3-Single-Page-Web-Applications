@@ -10,7 +10,7 @@ function Temp({ temp, modifier }) {
     console.log("convertedTemp", convertedTemp)
     // const convertedTemp = unit === 'f' ? temp : temp// calculate ...
 
-    return <div className="temp">Temp {modifier} {convertedTemp} &deg;F</div>;
+    return <div className="Temp">Temp {modifier} {convertedTemp} &deg;F</div>;
 }
 
 export default Temp;

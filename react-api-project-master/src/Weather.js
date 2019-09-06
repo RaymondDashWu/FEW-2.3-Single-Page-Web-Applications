@@ -73,14 +73,14 @@ class Weather extends Component {
         
         return (
           <div>
-            <div>Title: {main}</div>
-            <div><Desc desc={description}/></div>
-            <div>Icon: <img src={`https://openweathermap.org/img/wn/${icon}.png`}/></div>
-            <div><Temp temp={temp}/></div>
-            <div><Atmos pressure={pressure}/></div>
-            <div><Atmos humidity={humidity}/></div>
-            <div><Temp temp={temp_min} modifier="Min"/></div>
-            <div><Temp temp={temp_max} modifier="Max"/></div>
+            <div class="Title">Title: {main}</div>
+            <Desc desc={description}/>
+            <div class="Icon">Icon: <img src={`https://openweathermap.org/img/wn/${icon}.png`}/></div>
+            <Temp temp={temp}/>
+            <Atmos pressure={pressure}/>
+            <Atmos humidity={humidity}/>
+            <Temp temp={temp_min} modifier="Min"/>
+            <Temp temp={temp_max} modifier="Max"/>
           </div>
         )
       }
