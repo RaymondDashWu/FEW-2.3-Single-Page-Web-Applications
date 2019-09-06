@@ -75,10 +75,10 @@ class Weather extends Component {
           <div>
             <div>Title: {main}</div>
             <div><Desc desc={description}/></div>
-            <div>Icon: {icon}</div>
+            <div>Icon: <img src={`https://openweathermap.org/img/wn/${icon}.png`}/></div>
             <div><Temp temp={temp}/></div>
-            <div>Pressure: {pressure}</div>
-            <div>Humidity: {humidity}</div>
+            <div><Atmos pressure={pressure}/></div>
+            <div><Atmos humidity={humidity}/></div>
             <div><Temp temp={temp_min} modifier="Min"/></div>
             <div><Temp temp={temp_max} modifier="Max"/></div>
           </div>
