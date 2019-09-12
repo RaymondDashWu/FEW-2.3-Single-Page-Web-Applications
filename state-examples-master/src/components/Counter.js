@@ -4,16 +4,25 @@ import "./Counter.css";
 
 // Define a new Component with a class
 // It must extend Component (which we imported above)
+
+// change to function
 class Counter extends Component {
-  constructor() {
-    super(); // You must call super() in the constructor!
+  constructor(props) {
+    super(props); // You must call super() in the constructor!
 
     // State is an object with properties
     // In this case there is one property: count
     this.state = {
       count: 0
     };
+
+    this.increment = 0;
+    this.buttonText = "";
   }
+
+  // handleChange(e) {
+  //   this.props.
+  // }
 
   render() {
     return (
@@ -25,11 +34,11 @@ class Counter extends Component {
         by adding one. You must change state by calling this.setState() */}
         <button
           onClick={() => {
-            this.setState({ count: this.state.count + 1 });
+            this.setState({ count: this.state.count + this.props.increment });
           }}
           className="Counter--button"
         >
-          Count
+          {this.props.buttonText} {this.props.increment}
         </button>
       </div>
     );

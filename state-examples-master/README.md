@@ -61,3 +61,26 @@ Your app should look something like:
 - [ Buy Factory ]
 
 **Challenge 7**
+
+
+
+
+
+--- 
+
+- App 
+    - Title
+    - Counter
+        - count *
+    - Counter 
+        - count *
+    - Counter
+        - count *
+
+
+- App 
+    - Title
+    - count *
+    - Counter
+    - Counter 
+    - Counter
