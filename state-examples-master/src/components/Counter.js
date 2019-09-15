@@ -25,16 +25,18 @@ class Counter extends Component {
   // }
 
   render() {
+    const {total, updateTotal, increment} = this.props;
     return (
-      <div className="Counter">
+      <div className="Counter" >
         {/* This element displays the value of this.state.count */}
-        <Title text={this.state.count} />
+        {/* <Title text={this.state.count} /> */}
 
         {/* This button will change this.state.count each time it is clicked
         by adding one. You must change state by calling this.setState() */}
         <button
           onClick={() => {
             this.setState({ count: this.state.count + this.props.increment });
+            updateTotal(total + increment);
           }}
           className="Counter--button"
         >

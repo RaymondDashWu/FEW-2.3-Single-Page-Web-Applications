@@ -3,13 +3,15 @@ import inventory, { categories } from './inventory'
 
 
 class CategoryButton extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         
         this.state = {
           category: '',
           currentCategory: null,
         }
+
+        this.cat = "TEST"
       }
       render() {
         const cats = categories.map((item, index) => {
