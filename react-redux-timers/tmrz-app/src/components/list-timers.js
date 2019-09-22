@@ -13,14 +13,7 @@ class ListTimers extends Component {
         return (
             // TODO: Turn into separate Timer component
           <div>
-            {this.props.timers.map((timer, i) => {
-             // Here the render method maps `this.props.timers` to:
-              return (
-                <div> 
-                  {this.props.timers.map((timer, i) => <TimerView key={i} timer={timer} index={i} />)}
-                </div>
-              )
-            })}
+            {this.props.timers.map((timer, i) => <TimerView key={i} timer={timer} index={i} />)}
           </div>
         )
       }
