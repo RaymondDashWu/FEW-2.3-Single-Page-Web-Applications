@@ -1,0 +1,8 @@
+.PageHeader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    background-color: #81d8f7;
+    color: #fff;
+}
