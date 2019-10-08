@@ -6,3 +6,34 @@
     background-color: #81d8f7;
     color: #fff;
 }
+
+header {
+    width: 100%;
+}
+
+header h1 {
+    float: left
+}
+
+.HeaderRightAlign {
+    float:right;
+    list-style-type: none;
+    margin: 30px;
+    padding: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    /* background-color: #f1f1f1; */
+  }
+
+li {
+    display: inline;
+}
+
+li a {
+    padding: 8px;
+}

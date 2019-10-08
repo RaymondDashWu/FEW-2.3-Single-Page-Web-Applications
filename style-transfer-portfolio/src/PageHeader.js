@@ -8,11 +8,15 @@ function PageHeader() {
     return (
         <div className="PageHeader">
             <header>
-                <Link to="/">Home</Link>
-                <Link to="/gallery">Gallery</Link>
-                <Link to="/about">About</Link>
-                <Link to="/contact">Contact</Link>
-                <h1>TODO style this all</h1>
+                <h1>Style Transfer</h1>
+                <ul className="HeaderRightAlign">
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/gallery">Gallery</Link></li>
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/contact">Contact</Link></li>
+                </ul>
+                {/* <h1>TODO style this all</h1> */}
+                
             </header>
         </div>
     )
