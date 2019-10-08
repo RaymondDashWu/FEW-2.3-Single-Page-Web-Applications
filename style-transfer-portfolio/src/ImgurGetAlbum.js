@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { isTemplateElement } from '@babel/types';
 import './ImgurGetAlbum.css';
 
-
 const axios = require('axios').default;
 
 
