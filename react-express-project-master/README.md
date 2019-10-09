@@ -1,6 +1,6 @@
 # React Express Front End Starter 
 
-This project is a front end project meant to work with the Express backend [here](https://github.com/Product-College-Labs/react-express-server). 
+This project is a front end project meant to work with the Express backend [here](https://github.com/RaymondDashWu/FEW-2.3-Single-Page-Web-Applications/tree/master/react-express-server-master). 
 
 The goal of this project is to provide a front end for a simple Express server. 
 
