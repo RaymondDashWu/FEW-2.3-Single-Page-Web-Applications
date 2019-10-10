@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable semi */
 import React, { Component } from 'react';
-
+import axios from 'axios'
 import './App.css';
 
 class App extends Component {
@@ -15,6 +15,10 @@ class App extends Component {
       message: null,
       number: null,
       dice: null,
+
+      weatherData: null,
+      inputLat: null,
+      inputLong: null,
     }
   }
 
@@ -52,6 +56,17 @@ class App extends Component {
       console.log(err.message)
     })
   }
+  
+  async fetchWeather(latitude, longitude) {
+    const url = `/weather/${latitude}/${longitude}`;
+    console.log("url", url)
+    const res = await axios.get(url, {headers: {'Content-Type': 'application/json'}})
+    console.log("res", res)
+    this.setState({ weatherData: res.data })
+    // }).catch((err) => {
+    //   console.log(err.message)
+    // })
+  }
 
   renderMessage() {
     // Used to conditionally render data from server.
@@ -67,7 +82,7 @@ class App extends Component {
 
   render() {
     const { about } = this.state
-
+    // console.log("axios", axios.get)
     return (
       <div className="App">
         <p>
@@ -84,6 +99,25 @@ class App extends Component {
               this.setState({ number: e.target.value })
             }}
           />
+
+          <h1>For weather API</h1>
+          37.8267,-122.4233<br/>
+          <input
+            type="text"
+            value={ this.state.inputLat }
+            placeholder="Enter a Latitude"
+            onChange={(e) => {
+              this.setState({ inputLat: e.target.value })
+            }}
+          />
+          <input
+            type="text"
+            value={ this.state.inputLong }
+            placeholder="Enter a Longitude"
+            onChange={(e) => {
+              this.setState({ inputLong: e.target.value })
+            }}
+          />
         </p>
 
         <p>
@@ -91,11 +125,16 @@ class App extends Component {
             type="button"
             onClick={() => {
               this.fetchMessage(this.state.number)
+              this.fetchWeather(this.state.inputLat, this.state.inputLong)
             }}
           >
-          Random
+          Submit
           </button>
         </p>
+
+        <pre style={{height:'50vh', overflow:'auto'}}>
+            <code>{JSON.stringify(this.state.weatherData, null, ' ')}</code>
+        </pre>
       </div>
     );
   }

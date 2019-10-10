@@ -24,6 +24,10 @@ function randomRolls(n, s) {
   return [diceResults, total]
 }
 
+function getWeather(lat, long) {
+  
+}
+
 module.exports.random = random
 module.exports.randomD = randomD
 module.exports.randomRolls = randomRolls

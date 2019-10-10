@@ -1,8 +1,11 @@
 /* eslint-disable semi */
+const axios = require('axios');
 const express = require('express')
 const bodyParser = require('body-parser')
 
-const { random, randomD, randomRolls } = require('./utils')
+require('dotenv').config()
+
+const { random, randomD, randomRolls, getWeather } = require('./utils')
 
 const app = express()
 
@@ -31,8 +34,8 @@ app.get('/random/:n', (req, res) => {
   const value = random(n)
   // res.json({ value })
   res.json({ value })
-
 })
+
 
 // /random/die/6
 app.get('/random/die/:n', (req, res) => {
@@ -48,6 +51,18 @@ app.get('/random/dice/:n/:s', (req, res) => {
   const rolls = randRoll[0]
   const total = randRoll[1]
   res.json({ rolls, total }) // { "rolls": [1,2,3], "total": 6 }
+})
+
+// TODO Make route specifically for darksky api
+app.get('/weather/:latitude/:longitude', async (req, res) => {
+  const { latitude, longitude } = req.params
+  const apikey = process.env.REACT_APP_DARKSKY_API_KEY;
+
+  const url = `https://api.darksky.net/forecast/${apikey}/${latitude},${longitude}`;
+  console.log("url", url)
+  const resp = await axios.get(url)
+  console.log("resp", resp)
+  res.json(resp.data)
 })
 
 const port = 4000
