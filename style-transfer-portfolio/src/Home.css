@@ -1,0 +1,11 @@
+.box__button, .box__file {
+    display: none;
+  }
+
+.no-js .box__button {
+    display: block;
+}
+
+strong:hover {
+    color: #39bfd3;
+}
