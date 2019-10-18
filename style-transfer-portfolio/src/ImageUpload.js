@@ -64,23 +64,6 @@ class ImageUpload extends Component {
         div.removeEventListener('drop', this.handleDrop)
     }
 
-    async uploadImage(subjectImage, styleImage) {
-        const url = `/style_transfer/`
-        console.log("url", url)
-        const res = await axios
-            .post(url, {
-                subject: subjectImage,
-                style: styleImage
-            })
-            .then(function (response) {
-                console.log(response);
-                this.setState({inputSubject: subjectImage, inputStyle: styleImage})
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
-    }
-
     render() {
         return (
             <div class="uploadBox" ref={this.dropRef}>
@@ -95,5 +78,9 @@ class ImageUpload extends Component {
         )
     }
 }
+
+// style_image + subject = react upload box
+// force mouse pointer css cursor
+// hook up
 
 export default ImageUpload;

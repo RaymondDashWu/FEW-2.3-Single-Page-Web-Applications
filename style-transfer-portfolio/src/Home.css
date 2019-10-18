@@ -1,4 +1,4 @@
-.box__button, .box__file {
+.box__file {
     display: none;
   }
 
@@ -8,4 +8,9 @@
 
 strong:hover {
     color: #39bfd3;
+}
+
+.infographic img {
+    margin-top: 20vh;
+    max-width: 100%;
 }

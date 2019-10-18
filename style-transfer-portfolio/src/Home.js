@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import './App.css';
 import ImageUpload from './ImageUpload';
+// import Demo from './Demo';
+
 
 import './Home.css';
 
@@ -16,64 +18,27 @@ class App extends Component {
     this.state = {
       inputSubject: null,
       inputStyle: null,
-      files: [
-        'nice.pdf',
-        'verycool.jpg',
-        'amazing.png',
-        'goodstuff.mp3',
-        'thankyou.doc'
-      ]
+      files: [],
+      fileObjects: []
     }
   }
 
-  componentDidMount() {
-    // Use Fetch to call API. The /test route returns a simple string
-    // This call in componentDidMount will only be called once
-    fetch('/about').then((res) => {
-      // stream the response as JSON
-      return res.json()
-    }).then((json) => {
-      console.log(json)
-      const { about } = json // Get a value from JSON object
-      this.setState({ about }) // Set a value on state with returned value
-    }).catch((err) => {
-      // Handle errors
-      console.log(err.message)
-    })
-
-    // Let's call another API
-    this.fetchMessage()
-  }
-
-  fetchMessage(param) {
-    // Wrapping the API call in a function allow you to make calls to this
-    // API as often as needed.
-
-    // This calls a route and passes value in the query string. 
-    console.log("param", param)
-    fetch(`/random/${param}`).then(res => res.json()).then((json) => {
-      console.log(">", json)
-      this.setState({
-        message: json.value,
-      })
-    }).catch((err) => {
-      console.log(err.message)
-    })
-  }
-
-  
-
-  renderMessage() {
-    // Used to conditionally render data from server.
-    // Returns null if message is null otherwise returns
-    // a populated JSX element.
-    const { message } = this.state
-    if (message === null) {
-      return undefined
+  async uploadImage(subjectImage, styleImage) {
+    const url = 'http://localhost:5000/style_transfer'
+    console.log("url", url)
+    const res = await axios
+        .post(url, {
+            subject: subjectImage,
+            style: styleImage
+        })
+        .then(function (response) {
+            console.log(response);
+            this.setState({inputSubject: subjectImage, inputStyle: styleImage})
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
     }
-
-    return <h1>{message}</h1>
-  }
 
   handleDrop = (files) => {
     let fileList = this.state.files
@@ -88,13 +53,38 @@ class App extends Component {
     const { about } = this.state
     // console.log("axios", axios.get)
     return (
+      <React.Fragment>
       <div className="App">
+          {/* <div className="__react-content">
+            <Demo />
+          </div> */}
           <h1>For Image Upload Section</h1>
           <ImageUpload handleDrop={this.handleDrop}>
             <div>
-            <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+            <input 
+              class="box__file" 
+              type="file" 
+              name="files[]" 
+              id="file" 
+              data-multiple-caption="{count} files selected" 
+              multiple 
+              onChange={(e) => {
+                // should add to this.state.fileList
+                this.setState({files: this.state.files.concat(e.target.files[0].name)})
+                console.log("this.state.files", this.state.files)
+                this.setState({fileObjects: this.state.fileObjects.concat(e.target.files)})
+                console.log("this.state.fileObjects", this.state.fileObjects)
+
+              }}
+                
+            />
             <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
-            <button class="box__button" type="submit">Upload</button>
+            <button type="button" class="btn btn-success btn-block" onClick={() => {
+              const data = new FormData()
+              data.append('file', this.state.fileObjects)
+              console.log("data", data)
+              console.log("this.state.fileObjects", this.state.fileObjects)
+              axios.post('http://localhost:5000/style_transfer/', {subject: data[0], style: data[1]})}}>Upload</button> 
 
               {this.state.files.map((file) =>
                 <div>{file}</div>
@@ -102,25 +92,20 @@ class App extends Component {
               )}
             </div>
           </ImageUpload>
-
-        <p>
-          <button
-            type="button"
-            onClick={() => {
-              this.fetchMessage(this.state.number)
-              this.fetchWeather(this.state.inputLat, this.state.inputLong)
-            }}
-          >
-          Submit
-          </button>
-        </p>
-
-        <pre style={{height:'50vh', overflow:'auto'}}>
-            <code>{JSON.stringify(this.state.weatherData, null, ' ')}</code>
-        </pre>
       </div>
+      <div class="infographic">
+        <img src={require("./infographic.jpg")} alt="test"/>
+      </div>
+      </React.Fragment>
     );
   }
 }
 
 export default App;
+
+// TODO form should POST a filestorage object
+// look up how to submit multiple files
+{/* <form encType="multipart-formdata" method="post">
+  <input type="hidden" value="1024" />
+
+</form> */}
