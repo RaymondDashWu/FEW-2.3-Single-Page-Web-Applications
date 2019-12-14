@@ -1,0 +1,11 @@
+{
+    "build": {
+      "env": {
+        "CLIENT_ID": "@client_id",
+        "CLIENT_SECRET": "@client_secret",
+        "REACT_APP_ACCESS_TOKEN": "@react_app_access_token",
+        "REFRESH_TOKEN": "@refresh_token",
+        "ACCOUNT_ID": "@account_id"
+      }
+    }
+}

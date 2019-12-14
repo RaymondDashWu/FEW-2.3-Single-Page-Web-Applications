@@ -23,16 +23,15 @@ class App extends Component {
     }
   }
 
-  async uploadImage(subjectImage, styleImage) {
-    const url = 'http://localhost:5000/style_transfer'
+  async uploadImage(image) {
+    const url = 'http://localhost:5000/style_transfer/'
     console.log("url", url)
     const res = await axios
-        .post(url, {
-            subject: subjectImage,
-            style: styleImage
-        })
+        .post(url, image)
         .then(function (response) {
-            console.log(response);
+            console.log("response", response);
+            console.log("response.statusText", response.statusText);
+
             this.setState({inputSubject: subjectImage, inputStyle: styleImage})
         })
         .catch(function (error) {
@@ -55,9 +54,6 @@ class App extends Component {
     return (
       <React.Fragment>
       <div className="App">
-          {/* <div className="__react-content">
-            <Demo />
-          </div> */}
           <h1>For Image Upload Section</h1>
           <ImageUpload handleDrop={this.handleDrop}>
             <div>
@@ -81,10 +77,14 @@ class App extends Component {
             <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
             <button type="button" class="btn btn-success btn-block" onClick={() => {
               const data = new FormData()
-              data.append('file', this.state.fileObjects)
+              // const data = this.state.fileObjects
+              data.append('subject', this.state.fileObjects[0][0])
+              data.append('style', this.state.fileObjects[1][0])
+              this.uploadImage(data)
               console.log("data", data)
-              console.log("this.state.fileObjects", this.state.fileObjects)
-              axios.post('http://localhost:5000/style_transfer/', {subject: data[0], style: data[1]})}}>Upload</button> 
+              // console.log("this.state.fileObjects", this.state.fileObjects)
+              // axios.post('http://localhost:5000/style_transfer/', {subject: this.state.fileObjects[0], style: this.state.fileObjects[1]})
+            }}>Upload</button> 
 
               {this.state.files.map((file) =>
                 <div>{file}</div>
@@ -105,7 +105,7 @@ export default App;
 
 // TODO form should POST a filestorage object
 // look up how to submit multiple files
-{/* <form encType="multipart-formdata" method="post">
-  <input type="hidden" value="1024" />
+// {/* <form encType="multipart-formdata" method="post">
+//   <input type="hidden" value="1024" />
 
-</form> */}
+// </form> */}
