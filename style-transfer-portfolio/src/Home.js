@@ -19,15 +19,16 @@ class App extends Component {
       inputSubject: null,
       inputStyle: null,
       files: [],
-      fileObjects: []
+      fileObjects: [],
+      email: "",
     }
   }
 
-  async uploadImage(image) {
+  async uploadImage(data) {
     const url = 'http://localhost:5000/style_transfer/'
     console.log("url", url)
     const res = await axios
-        .post(url, image)
+        .post(url, data)
         .then(function (response) {
             console.log("response", response);
             console.log("response.statusText", response.statusText);
@@ -80,6 +81,10 @@ class App extends Component {
               // const data = this.state.fileObjects
               data.append('subject', this.state.fileObjects[0][0])
               data.append('style', this.state.fileObjects[1][0])
+              console.log('this.state.email', this.state.email)
+              data.append('email', this.state.email)
+
+              console.log("data before uploadImage", data)
               this.uploadImage(data)
               console.log("data", data)
               // console.log("this.state.fileObjects", this.state.fileObjects)
@@ -92,6 +97,12 @@ class App extends Component {
               )}
             </div>
           </ImageUpload>
+      </div>
+      <div class="email-form">
+        <form>
+          
+          Email:<input type="text" onChange= {(e) => this.setState({email: e.target.value})}></input>
+        </form>
       </div>
       <div class="infographic">
         <img src={require("./infographic.jpg")} alt="test"/>
