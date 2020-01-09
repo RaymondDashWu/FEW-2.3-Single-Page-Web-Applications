@@ -55,7 +55,6 @@ class App extends Component {
     return (
       <React.Fragment>
       <div className="App">
-          <h1>For Image Upload Section</h1>
           <ImageUpload handleDrop={this.handleDrop}>
             <div>
             <input 
@@ -71,12 +70,56 @@ class App extends Component {
                 console.log("this.state.files", this.state.files)
                 this.setState({fileObjects: this.state.fileObjects.concat(e.target.files)})
                 console.log("this.state.fileObjects", this.state.fileObjects)
-
               }}
                 
             />
-            <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
-            <button type="button" class="btn btn-success btn-block" onClick={() => {
+            <label for="file"><strong>Pick a Subject image</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+
+              {this.state.files.map((file) =>
+                <div>{file}</div>
+                // <div key={i}>{file}</div>
+              )}
+            </div>
+          </ImageUpload>
+          
+          <img style={{maxWidth: '600px'}} src="https://i.imgur.com/LSLe7U6.jpg" />
+
+          <ImageUpload handleDrop={this.handleDrop}>
+            <div>
+            <input 
+              class="box__file" 
+              type="file" 
+              name="files[]" 
+              id="file" 
+              data-multiple-caption="{count} files selected" 
+              multiple 
+              onChange={(e) => {
+                // should add to this.state.fileList
+                this.setState({files: this.state.files.concat(e.target.files[0].name)})
+                console.log("this.state.files", this.state.files)
+                this.setState({fileObjects: this.state.fileObjects.concat(e.target.files)})
+                console.log("this.state.fileObjects", this.state.fileObjects)
+              }}
+                
+            />
+            <label for="file"><strong>Pick a Style image</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+
+              {this.state.files.map((file) =>
+                <div>{file}</div>
+                // <div key={i}>{file}</div>
+              )}
+            </div>
+          </ImageUpload>
+
+          <img style={{maxWidth: '600px'}} src="https://i.imgur.com/OsRYpk5.jpg" />
+      </div>
+      <div class="email-form">
+        <form>
+          
+          Email:<input type="text" onChange= {(e) => this.setState({email: e.target.value})}></input>
+        </form>
+
+        <button type="button" class="btn btn-success btn-block" onClick={() => {
               const data = new FormData()
               // const data = this.state.fileObjects
               data.append('subject', this.state.fileObjects[0][0])
@@ -91,18 +134,6 @@ class App extends Component {
               // axios.post('http://localhost:5000/style_transfer/', {subject: this.state.fileObjects[0], style: this.state.fileObjects[1]})
             }}>Upload</button> 
 
-              {this.state.files.map((file) =>
-                <div>{file}</div>
-                // <div key={i}>{file}</div>
-              )}
-            </div>
-          </ImageUpload>
-      </div>
-      <div class="email-form">
-        <form>
-          
-          Email:<input type="text" onChange= {(e) => this.setState({email: e.target.value})}></input>
-        </form>
       </div>
       <div class="infographic">
         <img src={require("./infographic.jpg")} alt="test"/>

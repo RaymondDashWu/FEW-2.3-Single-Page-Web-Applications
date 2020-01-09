@@ -1,5 +1,6 @@
 .box__file {
     display: none;
+
   }
 
 .no-js .box__button {
@@ -13,4 +14,19 @@ strong:hover {
 .infographic img {
     margin-top: 20vh;
     max-width: 100%;
+}
+
+/* Subject upload box */
+.uploadBox:nth-of-type(1) {
+    position: absolute;
+    top: 200px;
+    opacity: .7;
+}
+
+/* Style upload box */
+.uploadBox:nth-of-type(2) {
+    position: absolute;
+    top: 600px;
+    opacity: .7;
+    right: 100px;
 }
