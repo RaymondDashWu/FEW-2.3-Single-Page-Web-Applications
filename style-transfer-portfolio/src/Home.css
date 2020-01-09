@@ -12,14 +12,25 @@ strong:hover {
 }
 
 .infographic img {
-    margin-top: 20vh;
-    max-width: 100%;
+    margin-top: 5vh;
+    max-width: 90%;
 }
 
-/* Subject upload box */
-.uploadBox:nth-of-type(1) {
+/* NOTE Will use these classes to anchor later */
+.subjectContainer, .styleContainer {
+    position: relative;
+    width: 600px;
+    height: 384px;
+    margin: auto;
+    /* padding-bottom: 5vh; */
+}
+
+.uploadBox {
     position: absolute;
-    top: 200px;
+    top: 20%;
+    left: 20%;
+    width: calc(60% - 40px);
+    height: calc(60% - 200px);
     opacity: .7;
 }
 

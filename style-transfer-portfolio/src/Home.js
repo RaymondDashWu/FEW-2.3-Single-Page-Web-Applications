@@ -55,6 +55,12 @@ class App extends Component {
     return (
       <React.Fragment>
       <div className="App">
+        <div class="infographic">
+          {/* Put in own container temporarily until non image infographic
+          TODO replace image infographic with html */}
+          <img src={require("./infographic.jpg")}/>
+        </div>
+          <div className="subjectContainer">
           <ImageUpload handleDrop={this.handleDrop}>
             <div>
             <input 
@@ -73,7 +79,7 @@ class App extends Component {
               }}
                 
             />
-            <label for="file"><strong>Pick a Subject image</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+            <label for="file"><strong>Choose Subject image</strong><span class="box__dragndrop"> or drop it here</span>.</label>
 
               {this.state.files.map((file) =>
                 <div>{file}</div>
@@ -81,9 +87,10 @@ class App extends Component {
               )}
             </div>
           </ImageUpload>
-          
           <img style={{maxWidth: '600px'}} src="https://i.imgur.com/LSLe7U6.jpg" />
-
+        </div>
+        
+        <div className="styleContainer">
           <ImageUpload handleDrop={this.handleDrop}>
             <div>
             <input 
@@ -102,7 +109,7 @@ class App extends Component {
               }}
                 
             />
-            <label for="file"><strong>Pick a Style image</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+            <label for="file"><strong>Choose Style image</strong><span class="box__dragndrop"> or drop it here</span>.</label>
 
               {this.state.files.map((file) =>
                 <div>{file}</div>
@@ -110,8 +117,8 @@ class App extends Component {
               )}
             </div>
           </ImageUpload>
-
           <img style={{maxWidth: '600px'}} src="https://i.imgur.com/OsRYpk5.jpg" />
+        </div>
       </div>
       <div class="email-form">
         <form>
@@ -134,9 +141,6 @@ class App extends Component {
               // axios.post('http://localhost:5000/style_transfer/', {subject: this.state.fileObjects[0], style: this.state.fileObjects[1]})
             }}>Upload</button> 
 
-      </div>
-      <div class="infographic">
-        <img src={require("./infographic.jpg")} alt="test"/>
       </div>
       </React.Fragment>
     );
