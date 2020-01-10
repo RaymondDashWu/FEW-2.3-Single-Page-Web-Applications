@@ -21,6 +21,9 @@ class App extends Component {
       files: [],
       fileObjects: [],
       email: "",
+      subImage: "https://i.imgur.com/LSLe7U6.jpg",
+      styImage: "https://i.imgur.com/OsRYpk5.jpg",
+      formFilled: false,
     }
   }
 
@@ -39,6 +42,8 @@ class App extends Component {
             console.log(error)
         })
     }
+
+
 
   handleDrop = (files) => {
     let fileList = this.state.files
@@ -67,27 +72,30 @@ class App extends Component {
               class="box__file" 
               type="file" 
               name="files[]" 
-              id="file" 
+              id="file-1" 
               data-multiple-caption="{count} files selected" 
               multiple 
               onChange={(e) => {
                 // should add to this.state.fileList
+                console.log("first one")
                 this.setState({files: this.state.files.concat(e.target.files[0].name)})
                 console.log("this.state.files", this.state.files)
                 this.setState({fileObjects: this.state.fileObjects.concat(e.target.files)})
                 console.log("this.state.fileObjects", this.state.fileObjects)
+                this.setState({subImage: URL.createObjectURL(e.target.files[0])})
               }}
                 
             />
-            <label for="file"><strong>Choose Subject image</strong><span class="box__dragndrop"> or drop it here</span>.</label>
+            <label for="file-1"><strong>Choose Subject image</strong><span class="box__dragndrop"> or drop it here</span>.</label>
 
               {this.state.files.map((file) =>
                 <div>{file}</div>
                 // <div key={i}>{file}</div>
               )}
+
             </div>
           </ImageUpload>
-          <img style={{maxWidth: '600px'}} src="https://i.imgur.com/LSLe7U6.jpg" />
+          <img style={{width: '600px'}} src={this.state.subImage} />
         </div>
         
         <div className="styleContainer">
@@ -97,27 +105,32 @@ class App extends Component {
               class="box__file" 
               type="file" 
               name="files[]" 
-              id="file" 
+              id="file-2" 
               data-multiple-caption="{count} files selected" 
               multiple 
               onChange={(e) => {
-                // should add to this.state.fileList
+                console.log("hello")
                 this.setState({files: this.state.files.concat(e.target.files[0].name)})
                 console.log("this.state.files", this.state.files)
                 this.setState({fileObjects: this.state.fileObjects.concat(e.target.files)})
                 console.log("this.state.fileObjects", this.state.fileObjects)
+                // TODO This code does not reach and thus styImage never changes
+                this.setState({styImage: URL.createObjectURL(e.target.files[0])})
+                console.log("styImage", this.state.styImage)
               }}
                 
             />
-            <label for="file"><strong>Choose Style image</strong><span class="box__dragndrop"> or drop it here</span>.</label>
+            <label for="file-2"><strong>Choose Style image</strong><span class="box__dragndrop"> or drop it here</span>.</label>
 
               {this.state.files.map((file) =>
                 <div>{file}</div>
                 // <div key={i}>{file}</div>
               )}
+
+              {/* {this.setState({})} */}
             </div>
           </ImageUpload>
-          <img style={{maxWidth: '600px'}} src="https://i.imgur.com/OsRYpk5.jpg" />
+          <img style={{width: '600px'}} src={this.state.styImage} />
         </div>
       </div>
       <div class="email-form">
@@ -137,9 +150,12 @@ class App extends Component {
               console.log("data before uploadImage", data)
               this.uploadImage(data)
               console.log("data", data)
+              this.setState({formFilled: true})
               // console.log("this.state.fileObjects", this.state.fileObjects)
               // axios.post('http://localhost:5000/style_transfer/', {subject: this.state.fileObjects[0], style: this.state.fileObjects[1]})
             }}>Upload</button> 
+
+          {this.state.formFilled && <div className="formFilled">Thanks for submitting! The resulting image will be emailed to you. Please be patient as this could take up to an hour. You are free to close this tab now.</div>}
 
       </div>
       </React.Fragment>

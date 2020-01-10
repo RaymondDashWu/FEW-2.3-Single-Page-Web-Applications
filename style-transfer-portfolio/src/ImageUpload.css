@@ -2,15 +2,19 @@
   display: inline-block;
   outline: 2px dashed #92b0b3;
   outline-offset: -10px; 
-  position: relative;
+  position: absolute;
   transition: outline-offset .15s ease-in-out, background-color .15s linear;
   font-size: 1.25rem;
   background-color: #c8dadf;
-  position: relative;
   padding: 100px 20px;
   width: 100%;
   max-width: 680px;
   text-align: center;
+  top: 20%;
+  left: 20%;
+  width: calc(60% - 40px);
+  height: calc(60% - 200px);
+  opacity: .7;
 }
 
 .uploadBoxOverlay {

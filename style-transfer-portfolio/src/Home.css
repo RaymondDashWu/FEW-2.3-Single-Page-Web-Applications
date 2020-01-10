@@ -16,28 +16,30 @@ strong:hover {
     max-width: 90%;
 }
 
-/* NOTE Will use these classes to anchor later */
 .subjectContainer, .styleContainer {
     position: relative;
     width: 600px;
     height: 384px;
     margin: auto;
-    /* padding-bottom: 5vh; */
+    padding-top: 5vh;
+    overflow: hidden;
 }
 
-.uploadBox {
-    position: absolute;
+/* Email */
+.email-form {
+    /* display: inline-block; */
+    outline: 2px dashed #92b0b3;
+    outline-offset: -10px; 
+    position: relative;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    font-size: 1.25rem;
+    background-color: #c8dadf;
+    padding: 100px 20px;
+    max-width: 680px;
+    text-align: center;
     top: 20%;
-    left: 20%;
     width: calc(60% - 40px);
     height: calc(60% - 200px);
     opacity: .7;
-}
-
-/* Style upload box */
-.uploadBox:nth-of-type(2) {
-    position: absolute;
-    top: 600px;
-    opacity: .7;
-    right: 100px;
+    margin: auto;
 }
