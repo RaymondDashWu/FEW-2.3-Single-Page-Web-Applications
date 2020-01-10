@@ -21,8 +21,8 @@ class App extends Component {
       files: [],
       fileObjects: [],
       email: "",
-      subImage: "https://i.imgur.com/LSLe7U6.jpg",
-      styImage: "https://i.imgur.com/OsRYpk5.jpg",
+      subImage: require("./sugarkevin.jpg"),
+      styImage: require("./Hd-Wallpaper-Trippy.jpg"),
       formFilled: false,
     }
   }
