@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import './PageHeader.css';
 
-
 function PageHeader() {
     return (
         <div className="PageHeader">
@@ -15,8 +14,6 @@ function PageHeader() {
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
                 </ul>
-                {/* <h1>TODO style this all</h1> */}
-                
             </header>
         </div>
     )

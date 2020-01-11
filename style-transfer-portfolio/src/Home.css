@@ -1,7 +1,6 @@
 .box__file {
     display: none;
-
-  }
+}
 
 .no-js .box__button {
     display: block;
@@ -16,14 +15,15 @@ strong:hover {
     max-width: 90%;
 }
 
-.subjectContainer, .styleContainer {
+.subjectContainer,
+.styleContainer {
     position: relative;
     width: 600px;
     height: 384px;
     margin: auto;
     margin-top: 5vh;
     overflow: hidden;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: .3s;
 }
 
@@ -31,7 +31,7 @@ strong:hover {
 .email-form {
     /* display: inline-block; */
     outline: 2px dashed #92b0b3;
-    outline-offset: -10px; 
+    outline-offset: -10px;
     position: relative;
     transition: outline-offset .15s ease-in-out, background-color .15s linear;
     font-size: 1.25rem;
@@ -45,6 +45,6 @@ strong:hover {
     opacity: .7;
     margin: auto;
     margin-top: 5vh;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: .3s;
 }

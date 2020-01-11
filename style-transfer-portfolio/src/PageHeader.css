@@ -20,7 +20,7 @@ header h1 {
 }
 
 .HeaderRightAlign {
-    float:right;
+    float: right;
     list-style-type: none;
     margin: 30px;
     padding: 0;
@@ -31,7 +31,7 @@ ul {
     margin: 0;
     padding: 0;
     width: 25%;
-  }
+}
 
 li {
     display: inline;
